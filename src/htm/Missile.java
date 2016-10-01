@@ -1,26 +1,39 @@
 package htm;
 
+import java.awt.Image;
+
 public class Missile extends Sprite {
 
-	private final int BOARD_WIDTH = 390;
+	private int width = 600;
 	private final int MISSILE_SPEED = 2;
 	
-	public Missile(int x, int y) {
+	public Missile(int x, int y, int w, String image) {
 		super(x, y);
-		
-		initMissile();
+		this.width = w;
+		initMissile(image);
 	}
 
 	
-	private void initMissile(){
-		loadImage("src/images/achim-head-small.png");
+	private void initMissile(String image){
+		loadImage(image);
 		getImageDimensions();
+	}
+	
+	public void setMissile(int i){
+		switch(i){
+		case PlayerSquare.ACHIM:
+			loadImage(Links.ACHIM_S);
+			break;
+		case PlayerSquare.MARTIN:
+			loadImage(Links.MARTIN_S);
+			break;
+		}
 	}
 	
 	public void move(){
 		x += MISSILE_SPEED;
 		
-		if (x > BOARD_WIDTH){
+		if (x > width){
 			vis = false;
 		}
 	}

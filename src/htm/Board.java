@@ -17,23 +17,23 @@ public class Board extends JPanel {
 	
 	private Image image;
 
-	public Board() {
+	public Board(String eyemage) {
 		
-		initBoard();
+		initBoard(eyemage);
 
 	}
 
-	private void initBoard(){
+	private void initBoard(String eyemage){
 		
-		loadImage();
+		loadImage(eyemage);
 		
 		int w = image.getWidth(this);
 		int h = image.getHeight(this);
 		setPreferredSize(new Dimension(w, h));
 	}
 	
-	private void loadImage(){
-		ImageIcon ii = new ImageIcon("src/images/achim.jpg");
+	private void loadImage(String eyemage){
+		ImageIcon ii = new ImageIcon(eyemage);
 		image = ii.getImage();
 	}
 	

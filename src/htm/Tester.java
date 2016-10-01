@@ -13,16 +13,15 @@ public class Tester {
 			public void run() {
 				
 				JFrame frame = new JFrame();
-				frame.setSize(600, 400);
 				frame.setVisible(true);
 				
 				Board3 game = new Board3();
-				CharPanel chara = new CharPanel(game);
+				CharPanel pann = new CharPanel();
 				
 				frame.setLayout(new BorderLayout());
 				
 				frame.add(game, BorderLayout.CENTER);
-				frame.add(chara, BorderLayout.EAST);
+				frame.add(pann, BorderLayout.SOUTH);
 				
 				frame.setSize(600, 400);
 				frame.setResizable(false);

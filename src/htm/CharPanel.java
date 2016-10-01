@@ -1,39 +1,49 @@
 package htm;
 
+import java.awt.Font;
 import java.awt.Image;
 import java.util.HashMap;
 
-import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
+import javax.swing.border.EmptyBorder;
 
-
-
-public class CharPanel extends JPanel{
+public class CharPanel extends JPanel {
 
 	private HashMap<Integer, Image> peeps;
-	
-	public CharPanel(Board3 board) {
-		
-		this.setSize(200, 400);
 
-		peeps.put(PlayerSquare.ACHIM, (new ImageIcon("src/images/achim-head.png")).getImage());
-		peeps.put(PlayerSquare.MARTIN,(new ImageIcon("src/images/martin-head.png")).getImage()))
+	public CharPanel() {
+
+		Board board1 = new Board(Links.ACHIM);
+		Board board2 = new Board(Links.MARTIN);
+		Board board3 = new Board(Links.KASHIF);
 		
-		JRadioButton achim = new JRadioButton(peeps.get(PlayerSquare.ACHIM));
-		achim.addActionListener(e -> board.setCharacter(PlayerSquare.ACHIM));
-		achim.setSelected(true);
-		
-		JRadioButton martin = new JRadioButton();
-		martin.addActionListener(e -> board.setCharacter(PlayerSquare.MARTIN));
-		
-		ButtonGroup charas = new ButtonGroup();
-		
-		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		add(achim);
-		add(martin);
-		
-		
+		JLabel label1 = new JLabel("1");
+		JLabel label2 = new JLabel("2");
+		JLabel label3 = new JLabel("3");
+		label1.setFont(new Font("SansSerif", Font.BOLD, 40));
+		label1.setBorder(new EmptyBorder(0, 10, 0, 10));
+		label2.setFont(new Font("SansSerif", Font.BOLD, 40));
+		label2.setBorder(new EmptyBorder(0, 10, 0, 10));
+		label3.setFont(new Font("SansSerif", Font.BOLD, 40));
+		label3.setBorder(new EmptyBorder(0, 10, 0, 10));
+
+		// setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+		add(board1);
+		add(label1);
+		add(board2);
+		add(label2);
+		add(board3);
+		add(label3);
+
+		/*
+		 * setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+		 * 
+		 * ImageIcon ii = new ImageIcon("src/images/achim-head.jpg"); Image
+		 * image = ii.getImage(); add(new CharBox(image, 1)); add(new
+		 * JLabel("1"));
+		 */
+
 	}
 
 }

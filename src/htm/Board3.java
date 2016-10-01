@@ -39,6 +39,7 @@ public class Board3 extends JPanel implements ActionListener {
 	
 	public void setCharacter(int p){
 		square.setPlayer(p);
+		
 	}
 	
 	@Override
