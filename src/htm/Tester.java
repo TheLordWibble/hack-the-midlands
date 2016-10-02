@@ -31,10 +31,9 @@ public class Tester {
 						throw new NumberFormatException();
 					}
 					
-				}catch(NumberFormatException e){
+				}catch(NumberFormatException | ArrayIndexOutOfBoundsException e){
 					
-					remind();
-					System.exit(1);
+					player = Player.ACHIM;
 				}
 				
 				JFrame frame = new JFrame();
