@@ -13,6 +13,8 @@ public class Links {
 	public static final String JOHN = "src/images/john-head.png";
 	public static final String GOODMAN = "src/images/goodman-head.png";
 	public static final String ALEX = "src/images/alex-head.png";
+	public static final String MEEK = "src/images/meek-head.png";
+	public static final String MARK = "src/images/mark.png";
 	
 	// missiles
 	
@@ -33,4 +35,7 @@ public class Links {
 	public static final String JOHN_MUS = "src/music/john.wav";
 	
 	public static final String DAN_Q = "src/music/dan-quote.wav";
+	public static final String PACMAN = "src/music/pacman.wav";
+	public static final String MARK_MUS = "src/music/mark.wav";
+	public static final String MARK_W = "src/images/mark-missile.png";
 }

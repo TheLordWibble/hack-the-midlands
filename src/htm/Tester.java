@@ -43,7 +43,7 @@ public class Tester {
 				int gameX = 1000;
 				int gameY = 1000;
 				
-				Board3 game = new Board3(gameX, gameY, player);
+				BulletBoard game = new BulletBoard(gameX, gameY, player);
 				CharPanel pann = new CharPanel();
 				
 				frame.setLayout(new BorderLayout());
@@ -54,7 +54,7 @@ public class Tester {
 				frame.setSize(gameX, gameY);
 				frame.setResizable(false);
 				
-				frame.setTitle("Achim's Quest");
+				frame.setTitle("AchimQuest");
 				frame.setLocationRelativeTo(null);
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			}

@@ -14,6 +14,7 @@ public class Player extends Sprite {
 
 	private int dx, dy;
 	private ArrayList missiles;
+
 	private Image image;
 	public static final int ACHIM = 0;
 	public static final int MARTIN = 1;
@@ -25,22 +26,24 @@ public class Player extends Sprite {
 	private int gameX;
 	private int gameY;
 	private int player;
+	private boolean boss;
 
 	private AudioStream aud;
 	private AudioStream quips;
 
-	public Player(int x, int y, int gameX, int gameY) {
+	public Player(int x, int y, int gameX, int gameY, int player) {
 		super(x, y);
+		boss = false;
 		this.gameX = gameX;
 		this.gameY = gameY;
-		player = Player.ACHIM;
+		this.player = player;
 		initPlayer();
 	}
 
 	private void initPlayer() {
 
 		AudioPlayer.player.stop(aud);
-		
+
 		InputStream test;
 		try {
 			test = new FileInputStream(Links.ACHIM_MUS);
@@ -79,33 +82,45 @@ public class Player extends Sprite {
 		switch (p) {
 		case ACHIM:
 			loadImage(Links.ACHIM);
-			changeMusic(Links.ACHIM_MUS);
+			if (!boss) {
+				changeMusic(Links.ACHIM_MUS);
+			}
 			this.missileLocation = Links.ACHIM_W;
 			break;
 		case MARTIN:
 			loadImage(Links.MARTIN);
-			changeMusic(Links.MARTIN_MUS);
+			if (!boss) {
+				changeMusic(Links.MARTIN_MUS);
+			}
 			this.missileLocation = Links.MARTIN_W;
 			break;
 		case KASHIF:
 			loadImage(Links.KASHIF);
-			changeMusic(Links.KASHIF_MUS);
+			if (!boss) {
+				changeMusic(Links.KASHIF_MUS);
+			}
 			this.missileLocation = Links.KASHIF_W;
 			break;
 		case DAN:
 			loadImage(Links.DAN);
-			changeMusic(Links.DAN_MUS);
+			if (!boss) {
+				changeMusic(Links.DAN_MUS);
+			}
 			this.missileLocation = Links.DAN_W;
 			makeQuote(Links.DAN_Q);
 			break;
 		case VOLKER:
 			loadImage(Links.VOLKER);
-			changeMusic(Links.VOLKER_MUS);
+			if (!boss) {
+				changeMusic(Links.VOLKER_MUS);
+			}
 			this.missileLocation = Links.VOLKER_W;
 			break;
 		case JOHN:
 			loadImage(Links.JOHN);
-			changeMusic(Links.JOHN_MUS);
+			if (!boss) {
+				changeMusic(Links.JOHN_MUS);
+			}
 			this.missileLocation = Links.JOHN_W;
 			break;
 
@@ -131,7 +146,7 @@ public class Player extends Sprite {
 		return missiles;
 	}
 
-	private void makeQuote(String p) {
+	public void makeQuote(String p) {
 
 		InputStream kek;
 		try {
@@ -145,7 +160,7 @@ public class Player extends Sprite {
 		AudioPlayer.player.start(quips);
 	}
 
-	private void changeMusic(String p) {
+	void changeMusic(String p) {
 
 		InputStream test;
 		try {
@@ -199,7 +214,7 @@ public class Player extends Sprite {
 			dy = 2;
 			break;
 		case KeyEvent.VK_TAB:
-			
+
 		}
 	}
 
@@ -224,8 +239,12 @@ public class Player extends Sprite {
 			dy = 0;
 		}
 	}
-	
-	public void end(){
+
+	public void end() {
 		AudioPlayer.player.stop(aud);
+	}
+
+	public void setBoss(boolean boss) {
+		this.boss = boss;
 	}
 }

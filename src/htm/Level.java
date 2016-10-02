@@ -6,12 +6,16 @@ public class Level {
 	private int maxSpeed;
 	private int no;
 	private String enemyType;
+	private boolean boss;
+	private int hits;
 	
-	public Level(int enemies, int maxSpeed, String enemyType, int no) {
+	public Level(int enemies, int maxSpeed, String enemyType, int no, boolean boss, int hits) {
 		this.enemies = enemies;
 		this.maxSpeed = maxSpeed;
 		this.enemyType = enemyType;
 		this.no = no;
+		this.boss = boss;
+		this.hits = hits;
 	}
 
 	public int getEnemies() {
@@ -48,6 +52,14 @@ public class Level {
 
 	public String toString(){
 		return "Level " + no;
+	}
+	
+	public boolean isBoss(){
+		return boss;
+	}
+	
+	public int getHits(){
+		return this.hits;
 	}
 	
 }

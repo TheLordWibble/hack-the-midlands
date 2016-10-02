@@ -5,12 +5,16 @@ import java.util.Random;
 public class Alien extends Sprite {
 
 	private final int INITIAL_X = 1000;
-	private int speed;
+	protected int speed;
+	protected String enemyType;
+	protected int health;
 	
-	public Alien(int x, int y, String enemyType, int maxSpeed) {
+	public Alien(int x, int y, String enemyType, int maxSpeed, int hits) {
 		super(x, y);
 
+		this.enemyType = enemyType;
 		Random r = new Random();
+		this.health = hits;
 		speed = r.nextInt(maxSpeed) + 1;
 		
 		initAlien(enemyType);
@@ -30,5 +34,14 @@ public class Alien extends Sprite {
         x -= speed;
         
     }
+	
+	public void gotHit(){
+		 health--;
+		System.out.println(health);
+	}
+	
+	public int getHealth(){
+		return this.health;
+	}
 	
 }
