@@ -49,7 +49,7 @@ public class Board3 extends JPanel implements ActionListener {
 		
 		level1 = new Level(50, 3, Links.SABS, 1);
 		level2 = new Level(60, 4, Links.GOODMAN, 2);
-		level3  = new Level(70, 5, Links.ALEX, 3);
+		level3  = new Level(80, 5, Links.ALEX, 3);
 		
 		levels.add(level2);
 		levels.add(level3);
@@ -58,7 +58,7 @@ public class Board3 extends JPanel implements ActionListener {
 		this.player = player;
 
 		newG = true;
-		currLevel = level1;
+		currLevel = level3;
 		initBoard(940, 815, currLevel);
 
 	}
@@ -173,7 +173,7 @@ public class Board3 extends JPanel implements ActionListener {
 		}
 		Font small = new Font("Helvetica", Font.BOLD, 14);
 		FontMetrics fm = getFontMetrics(small);
-
+		
 		g.setColor(Color.white);
 		g.setFont(small);
 		g.drawString(msg, (B_WIDTH - fm.stringWidth(msg)) / 2, B_HEIGHT / 2);
