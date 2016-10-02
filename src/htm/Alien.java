@@ -1,11 +1,17 @@
 package htm;
 
- public class Alien extends Sprite {
+import java.util.Random;
+
+public class Alien extends Sprite {
 
 	private final int INITIAL_X = 1000;
+	private int speed;
 	
 	public Alien(int x, int y) {
 		super(x, y);
+
+		Random r = new Random();
+		speed = r.nextInt(5) + 1;
 		
 		initAlien();
 	}
@@ -21,7 +27,7 @@ package htm;
             x = INITIAL_X;
         }
 
-        x -= 1;
+        x -= speed;
     }
 	
 }
