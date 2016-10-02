@@ -46,6 +46,10 @@ public class Sprite {
 		return vis;
 	}
 	
+	public void setVisible(boolean vis){
+		this.vis = vis;
+	}
+	
 	public void setVisible(Boolean visible){
 		vis = visible;
 	}

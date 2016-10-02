@@ -21,10 +21,10 @@ public class Missile extends Sprite {
 	
 	public void setMissile(int i){
 		switch(i){
-		case PlayerSquare.ACHIM:
+		case Player.ACHIM:
 			loadImage(Links.ACHIM_W);
 			break;
-		case PlayerSquare.MARTIN:
+		case Player.MARTIN:
 			loadImage(Links.MARTIN_W);
 			break;
 		}

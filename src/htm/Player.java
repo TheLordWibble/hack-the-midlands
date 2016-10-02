@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
 
-public class PlayerSquare extends Sprite {
+public class Player extends Sprite {
 
 	private int dx, dy;
 	private ArrayList missiles;
@@ -24,19 +24,23 @@ public class PlayerSquare extends Sprite {
 	private String missileLocation;
 	private int gameX;
 	private int gameY;
+	private int player;
 
 	private AudioStream aud;
 	private AudioStream quips;
 
-	public PlayerSquare(int x, int y, int gameX, int gameY) {
+	public Player(int x, int y, int gameX, int gameY) {
 		super(x, y);
 		this.gameX = gameX;
 		this.gameY = gameY;
+		player = Player.ACHIM;
 		initPlayer();
 	}
 
 	private void initPlayer() {
 
+		AudioPlayer.player.stop(aud);
+		
 		InputStream test;
 		try {
 			test = new FileInputStream(Links.ACHIM_MUS);
@@ -75,26 +79,33 @@ public class PlayerSquare extends Sprite {
 		switch (p) {
 		case ACHIM:
 			loadImage(Links.ACHIM);
+			changeMusic(Links.ACHIM_MUS);
 			this.missileLocation = Links.ACHIM_W;
 			break;
 		case MARTIN:
 			loadImage(Links.MARTIN);
+			changeMusic(Links.MARTIN_MUS);
 			this.missileLocation = Links.MARTIN_W;
 			break;
 		case KASHIF:
 			loadImage(Links.KASHIF);
+			changeMusic(Links.KASHIF_MUS);
 			this.missileLocation = Links.KASHIF_W;
 			break;
 		case DAN:
 			loadImage(Links.DAN);
+			changeMusic(Links.DAN_MUS);
 			this.missileLocation = Links.DAN_W;
+			makeQuote(Links.DAN_Q);
 			break;
 		case VOLKER:
 			loadImage(Links.VOLKER);
+			changeMusic(Links.VOLKER_MUS);
 			this.missileLocation = Links.VOLKER_W;
 			break;
 		case JOHN:
 			loadImage(Links.JOHN);
+			changeMusic(Links.JOHN_MUS);
 			this.missileLocation = Links.JOHN_W;
 			break;
 
@@ -155,28 +166,22 @@ public class PlayerSquare extends Sprite {
 		switch (key) {
 		case KeyEvent.VK_1:
 			setPlayer(ACHIM);
-			changeMusic(Links.ACHIM_MUS);
 			break;
 		case KeyEvent.VK_2:
 			setPlayer(MARTIN);
-			changeMusic(Links.MARTIN_MUS);
 			break;
 		case KeyEvent.VK_3:
 			setPlayer(KASHIF);
-			changeMusic(Links.KASHIF_MUS);
 			break;
 		case KeyEvent.VK_4:
 			setPlayer(DAN);
-			makeQuote(Links.DAN_Q);
-			changeMusic(Links.DAN_MUS);
+
 			break;
 		case KeyEvent.VK_5:
 			setPlayer(VOLKER);
-			changeMusic(Links.VOLKER_MUS);
 			break;
 		case KeyEvent.VK_6:
 			setPlayer(JOHN);
-			changeMusic(Links.JOHN_MUS);
 			break;
 		case KeyEvent.VK_SPACE:
 			fire();
@@ -192,6 +197,9 @@ public class PlayerSquare extends Sprite {
 			break;
 		case KeyEvent.VK_DOWN:
 			dy = 2;
+			break;
+		case KeyEvent.VK_TAB:
+			
 		}
 	}
 
@@ -216,5 +224,8 @@ public class PlayerSquare extends Sprite {
 			dy = 0;
 		}
 	}
-
+	
+	public void end(){
+		AudioPlayer.player.stop(aud);
+	}
 }

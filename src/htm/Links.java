@@ -11,6 +11,8 @@ public class Links {
 	public static final String SABS = "src/images/sabs-head.png";
 	public static final String VOLKER = "src/images/volker-head.png";
 	public static final String JOHN = "src/images/john-head.png";
+	public static final String GOODMAN = "src/images/goodman-head.png";
+	public static final String ALEX = "src/images/alex-head.png";
 	
 	// missiles
 	

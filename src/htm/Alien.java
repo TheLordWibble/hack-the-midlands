@@ -7,17 +7,17 @@ public class Alien extends Sprite {
 	private final int INITIAL_X = 1000;
 	private int speed;
 	
-	public Alien(int x, int y) {
+	public Alien(int x, int y, String enemyType, int maxSpeed) {
 		super(x, y);
 
 		Random r = new Random();
-		speed = r.nextInt(5) + 1;
+		speed = r.nextInt(maxSpeed) + 1;
 		
-		initAlien();
+		initAlien(enemyType);
 	}
 	
-	private void initAlien(){
-		loadImage(Links.SABS);
+	private void initAlien(String enemyType){
+		loadImage(enemyType);
 		getImageDimensions();
 	}
 
@@ -28,6 +28,7 @@ public class Alien extends Sprite {
         }
 
         x -= speed;
+        
     }
 	
 }
