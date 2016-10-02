@@ -15,7 +15,10 @@ public class Tester {
 				JFrame frame = new JFrame();
 				frame.setVisible(true);
 				
-				Board3 game = new Board3();
+				int gameX = 1000;
+				int gameY = 1000;
+				
+				Board3 game = new Board3(gameX, gameY);
 				CharPanel pann = new CharPanel();
 				
 				frame.setLayout(new BorderLayout());
@@ -23,7 +26,7 @@ public class Tester {
 				frame.add(game, BorderLayout.CENTER);
 				frame.add(pann, BorderLayout.SOUTH);
 				
-				frame.setSize(600, 400);
+				frame.setSize(gameX, gameY);
 				frame.setResizable(false);
 				
 				frame.setTitle("Achim's Quest");

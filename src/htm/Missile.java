@@ -5,7 +5,7 @@ import java.awt.Image;
 public class Missile extends Sprite {
 
 	private int width = 600;
-	private final int MISSILE_SPEED = 2;
+	private final int MISSILE_SPEED = 4;
 	
 	public Missile(int x, int y, int w, String image) {
 		super(x, y);
@@ -22,10 +22,10 @@ public class Missile extends Sprite {
 	public void setMissile(int i){
 		switch(i){
 		case PlayerSquare.ACHIM:
-			loadImage(Links.ACHIM_S);
+			loadImage(Links.ACHIM_W);
 			break;
 		case PlayerSquare.MARTIN:
-			loadImage(Links.MARTIN_S);
+			loadImage(Links.MARTIN_W);
 			break;
 		}
 	}

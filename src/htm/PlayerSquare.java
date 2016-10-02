@@ -18,12 +18,20 @@ public class PlayerSquare extends Sprite {
 	public static final int ACHIM = 0;
 	public static final int MARTIN = 1;
 	public static final int KASHIF = 2;
+	public static final int DAN = 3;
+	public static final int VOLKER = 4;
+	public static final int JOHN = 5;
 	private String missileLocation;
+	private int gameX;
+	private int gameY;
 
 	private AudioStream aud;
+	private AudioStream quips;
 
-	public PlayerSquare(int x, int y) {
+	public PlayerSquare(int x, int y, int gameX, int gameY) {
 		super(x, y);
+		this.gameX = gameX;
+		this.gameY = gameY;
 		initPlayer();
 	}
 
@@ -56,7 +64,7 @@ public class PlayerSquare extends Sprite {
 		 */
 
 		missiles = new ArrayList();
-		this.missileLocation = Links.ACHIM_S;
+		this.missileLocation = Links.ACHIM_W;
 
 		loadImage(Links.ACHIM);
 		getImageDimensions();
@@ -67,34 +75,71 @@ public class PlayerSquare extends Sprite {
 		switch (p) {
 		case ACHIM:
 			loadImage(Links.ACHIM);
-			this.missileLocation = Links.ACHIM_S;
+			this.missileLocation = Links.ACHIM_W;
 			break;
 		case MARTIN:
 			loadImage(Links.MARTIN);
-			this.missileLocation = Links.MARTIN_S;
+			this.missileLocation = Links.MARTIN_W;
 			break;
 		case KASHIF:
 			loadImage(Links.KASHIF);
-			this.missileLocation = Links.KASHIF_S;
+			this.missileLocation = Links.KASHIF_W;
 			break;
+		case DAN:
+			loadImage(Links.DAN);
+			this.missileLocation = Links.DAN_W;
+			break;
+		case VOLKER:
+			loadImage(Links.VOLKER);
+			this.missileLocation = Links.VOLKER_W;
+			break;
+		case JOHN:
+			loadImage(Links.JOHN);
+			this.missileLocation = Links.JOHN_W;
+			break;
+
 		}
 	}
 
 	public void move() {
-		x += dx;
-		y += dy;
+
+		if (dx > 0 && x < gameX) {
+			x += dx;
+		} else if (dx < 0 && x > 0) {
+			x += dx;
+		}
+
+		if (dy > 0 && y < gameY) {
+			y += dy;
+		} else if (dy < 0 && y > 0) {
+			y += dy;
+		}
 	}
 
 	public ArrayList getMissiles() {
 		return missiles;
 	}
 
+	private void makeQuote(String p) {
+
+		InputStream kek;
+		try {
+			AudioPlayer.player.stop(quips);
+			kek = new FileInputStream(p);
+
+			quips = new AudioStream(kek);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		AudioPlayer.player.start(quips);
+	}
+
 	private void changeMusic(String p) {
-		
+
 		InputStream test;
 		try {
 			AudioPlayer.player.stop(aud);
-			
+
 			test = new FileInputStream(p);
 
 			aud = new AudioStream(test);
@@ -120,20 +165,33 @@ public class PlayerSquare extends Sprite {
 			setPlayer(KASHIF);
 			changeMusic(Links.KASHIF_MUS);
 			break;
+		case KeyEvent.VK_4:
+			setPlayer(DAN);
+			makeQuote(Links.DAN_Q);
+			changeMusic(Links.DAN_MUS);
+			break;
+		case KeyEvent.VK_5:
+			setPlayer(VOLKER);
+			changeMusic(Links.VOLKER_MUS);
+			break;
+		case KeyEvent.VK_6:
+			setPlayer(JOHN);
+			changeMusic(Links.JOHN_MUS);
+			break;
 		case KeyEvent.VK_SPACE:
 			fire();
 			break;
 		case KeyEvent.VK_LEFT:
-			dx = -1;
+			dx = -2;
 			break;
 		case KeyEvent.VK_RIGHT:
-			dx = 1;
+			dx = 2;
 			break;
 		case KeyEvent.VK_UP:
-			dy = -1;
+			dy = -2;
 			break;
 		case KeyEvent.VK_DOWN:
-			dy = 1;
+			dy = 2;
 		}
 	}
 
