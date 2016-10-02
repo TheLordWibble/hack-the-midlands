@@ -88,7 +88,7 @@ public class BulletBoard extends JPanel implements ActionListener {
 		deaths = 0;
 		this.player = player;
 		newG = true;
-		currLevel = level5;
+		currLevel = level1;
 		initBoard(940, 815, currLevel);
 
 	}
